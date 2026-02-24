@@ -23,8 +23,9 @@ echo "✅ Homebrew found"
 # ------------------------------
 
 REQUIRED_PACKAGES=(
-  tmux
-  stow
+  tmux # for terminal multiplexer
+  stow # for dotfiles management
+  fnm # for node version management
 )
 
 for pkg in "${REQUIRED_PACKAGES[@]}"; do
