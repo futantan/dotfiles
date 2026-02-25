@@ -22,20 +22,15 @@ echo "✅ Homebrew found"
 # 2️⃣ Ensure required packages
 # ------------------------------
 
-REQUIRED_PACKAGES=(
-  tmux # for terminal multiplexer
-  stow # for dotfiles management
-  fnm # for node version management
-)
-
-for pkg in "${REQUIRED_PACKAGES[@]}"; do
+while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+  [[ -z "$pkg" || "$pkg" == \#* ]] && continue
   if brew list "$pkg" &>/dev/null; then
     echo "✅ $pkg already installed"
   else
     echo "📦 Installing $pkg..."
     brew install "$pkg"
   fi
-done
+done < "$DOTFILES_DIR/packages.txt"
 
 # ------------------------------
 # 3️⃣ Stow all modules
