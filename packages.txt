@@ -6,3 +6,6 @@ stow
 fnm
 lazygit
 zoxide
+jq
+neovim
+wget
