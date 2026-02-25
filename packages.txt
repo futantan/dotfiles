@@ -1,3 +1,4 @@
 tmux
 stow
 fnm
+lazygit
