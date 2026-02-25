@@ -7,3 +7,4 @@ alias o='open .'
 alias p=pnpm
 
 alias sshdokploy='ssh root@100.65.70.11'
+alias sshellie='ssh root@100.79.196.58'
