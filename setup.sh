@@ -22,13 +22,30 @@ echo "✅ Homebrew found"
 # 2️⃣ Ensure required packages
 # ------------------------------
 
-while IFS= read -r pkg || [[ -n "$pkg" ]]; do
-  [[ -z "$pkg" || "$pkg" == \#* ]] && continue
-  if brew list "$pkg" &>/dev/null; then
-    echo "✅ $pkg already installed"
-  else
-    echo "📦 Installing $pkg..."
-    brew install "$pkg"
+while IFS= read -r line || [[ -n "$line" ]]; do
+  # strip inline comments and trim whitespace
+  line="${line%%#*}"
+  line="${line#"${line%%[![:space:]]*}"}"
+  line="${line%"${line##*[![:space:]]}"}"
+  [[ -z "$line" ]] && continue
+  if [[ "$line" =~ ^brew\ +\"(.+)\" ]]; then
+    pkg="${BASH_REMATCH[1]}"
+    if brew list --formula "$pkg" &>/dev/null; then
+      echo "✅ $pkg already installed"
+    else
+      echo "📦 Installing $pkg..."
+      echo "➜ brew install $pkg"
+      brew install "$pkg"
+    fi
+  elif [[ "$line" =~ ^cask\ +\"(.+)\" ]]; then
+    pkg="${BASH_REMATCH[1]}"
+    if brew list --cask "$pkg" &>/dev/null; then
+      echo "✅ $pkg already installed (cask)"
+    else
+      echo "📦 Installing $pkg (cask)..."
+      echo "➜ brew install --cask $pkg"
+      brew install --cask "$pkg"
+    fi
   fi
 done < "$DOTFILES_DIR/packages.txt"
 

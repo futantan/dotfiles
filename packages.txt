@@ -1,11 +1,13 @@
-fish
-fisher
-starship
-tmux
-stow
-fnm
-lazygit
-zoxide
-jq
-neovim
-wget
+brew "fish"
+brew "fisher"
+brew "starship"
+brew "tmux"
+brew "stow"
+brew "fnm"
+brew "lazygit"
+brew "zoxide"
+brew "jq"
+brew "neovim"
+brew "wget"
+
+cask "logseq"
