@@ -3,3 +3,4 @@ stow
 fnm
 lazygit
 zoxide
+starship
