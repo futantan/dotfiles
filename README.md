@@ -61,3 +61,7 @@ cd ~/dotfiles
 git pull
 ./setup.sh
 ```
+
+## Reference
+
+- https://github.com/dmmulroy/.dotfiles
