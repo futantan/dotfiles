@@ -1,16 +1,35 @@
-theme = tokyonight
+theme = Catppuccin Macchiato
+
+# Shell integrations
+shell-integration = fish
+quit-after-last-window-closed = true
 
 font-family = MonoLisa
+font-style = Regular
+font-style-italic = Regular Italic
+font-style-bold = Bold
+font-style-bold-italic = Bold Italic
 font-size = 16
 
 background-opacity = 0.9
 background-blur-radius = 20
 
+# Cursor style
+cursor-style-blink = true
+cursor-style = block
+
+# Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+
+
+# macos options
+macos-option-as-alt = true
+macos-titlebar-proxy-icon = hidden
+
 adjust-cell-height = 35%
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
-# macos-titlebar-style = hidden
-cursor-style = block
 
 # window-padding-x = 16
 # window-padding-y = 16
