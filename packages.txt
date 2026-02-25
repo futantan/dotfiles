@@ -1,6 +1,8 @@
+fish
+fisher
+starship
 tmux
 stow
 fnm
 lazygit
 zoxide
-starship
