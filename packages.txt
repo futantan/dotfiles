@@ -9,5 +9,6 @@ brew "zoxide"
 brew "jq"
 brew "neovim"
 brew "wget"
+brew "zellij"
 
 cask "logseq"
