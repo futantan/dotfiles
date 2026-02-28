@@ -22,6 +22,8 @@ cursor-style = block
 clipboard-read = allow
 clipboard-write = allow
 
+macos-option-as-alt = true
+
 
 # macos options
 macos-option-as-alt = true
