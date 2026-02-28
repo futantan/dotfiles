@@ -6,5 +6,5 @@ alias lla='ll -a'
 alias o='open .'
 alias p=pnpm
 
-alias sshdokploy='ssh root@100.65.70.11'
+alias sshdokploy='ssh root@100.65.70.118'
 alias sshellie='ssh root@100.79.196.58'
