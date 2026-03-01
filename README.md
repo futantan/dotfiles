@@ -11,15 +11,18 @@ using symlinks via `stow`.
 
 Each top-level directory is a module:
 
+- `fish/` → `.config/fish/`
+- `ghostty/` → `.config/ghostty/`
+- `git/` → `.gitconfig`
 - `tmux/` → `.tmux.conf`
-- `nvim/` → `.config/nvim/`
+- `zellij/` → `.config/zellij/config.kdl`
 
 Each module mirrors the structure of `$HOME`.
 
 Example:
 
 tmux/.tmux.conf → ~/.tmux.conf
-nvim/.config/nvim/init.lua → ~/.config/nvim/init.lua
+zellij/.config/zellij/config.kdl → ~/.config/zellij/config.kdl
 
 ---
 
