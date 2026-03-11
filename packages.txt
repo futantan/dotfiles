@@ -10,6 +10,7 @@ brew "jq"
 brew "neovim"
 brew "wget"
 brew "zellij"
+brew "just"
 
 cask "logseq"
 cask "ticktick"
