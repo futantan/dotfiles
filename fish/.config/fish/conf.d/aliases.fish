@@ -9,3 +9,4 @@ alias q=exit
 
 alias sshdokploy='ssh root@100.65.70.118'
 alias sshellie='ssh root@100.79.196.58'
+alias nuke="git reset --hard HEAD; and git clean -df"
