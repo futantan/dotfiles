@@ -10,6 +10,8 @@ font-style-italic = Regular Italic
 font-style-bold = Bold
 font-style-bold-italic = Bold Italic
 font-size = 16
+# this solves the issue of displaying chinese characters
+grapheme-width-method = unicode
 
 background-opacity = 0.9
 background-blur-radius = 20
