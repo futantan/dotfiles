@@ -12,6 +12,7 @@ brew "wget"
 brew "zellij"
 brew "just"
 brew "mise"
+brew "orbstack"
 
 cask "logseq"
 cask "ticktick"
