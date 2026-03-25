@@ -11,6 +11,7 @@ brew "neovim"
 brew "wget"
 brew "zellij"
 brew "just"
+brew "mise"
 
 cask "logseq"
 cask "ticktick"
