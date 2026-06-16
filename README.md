@@ -12,9 +12,11 @@ using symlinks via `stow`.
 Each top-level directory is a module:
 
 - `fish/` → `.config/fish/`
+- `bin/` → `.local/bin/`
 - `ghostty/` → `.config/ghostty/`
 - `git/` → `.gitconfig`
 - `tmux/` → `.tmux.conf`
+- `zsh/` → `.zshrc`
 - `zellij/` → `.config/zellij/config.kdl`
 
 Each module mirrors the structure of `$HOME`.
