@@ -47,3 +47,14 @@ title = ""
 window-inherit-working-directory = true
 working-directory = inherit
 keybind = shift+enter=text:\x1b\r
+
+# Ctrl-Alt-number: jump to tmux window via tmux prefix2 (Ctrl-b).
+keybind = ctrl+alt+1=text:\x021
+keybind = ctrl+alt+2=text:\x022
+keybind = ctrl+alt+3=text:\x023
+keybind = ctrl+alt+4=text:\x024
+keybind = ctrl+alt+5=text:\x025
+keybind = ctrl+alt+6=text:\x026
+keybind = ctrl+alt+7=text:\x027
+keybind = ctrl+alt+8=text:\x028
+keybind = ctrl+alt+9=text:\x029
