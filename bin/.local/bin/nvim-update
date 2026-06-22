@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+NVIM_CONFIG="${NVIM_CONFIG:-$HOME/.config/nvim}"
+
+if [[ ! -d "$NVIM_CONFIG" ]]; then
+  echo "Neovim config not found: $NVIM_CONFIG" >&2
+  exit 1
+fi
+
+if ! git -C "$NVIM_CONFIG" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Neovim config is not inside a git work tree: $NVIM_CONFIG" >&2
+  exit 1
+fi
+
+repo_root="$(git -C "$NVIM_CONFIG" rev-parse --show-toplevel)"
+config_prefix="$(git -C "$NVIM_CONFIG" rev-parse --show-prefix)"
+
+if [[ -n "$(git -C "$repo_root" status --porcelain -- "$config_prefix")" ]]; then
+  echo "Neovim config has uncommitted changes. Commit or stash them before updating."
+  git -C "$repo_root" status --short -- "$config_prefix"
+  exit 1
+fi
+
+nvim --headless "+Lazy! update" +qa
+
+echo
+echo "LazyVim update finished. Review and commit any changes:"
+git -C "$repo_root" status --short -- "$config_prefix"

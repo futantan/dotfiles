@@ -75,7 +75,7 @@ done
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo "⚙️  Configuring Antigravity key repeat behavior..."
   defaults write com.google.antigravity ApplePressAndHoldEnabled -bool false
-  defaults delete -g ApplePressAndHoldEnabled
+  defaults delete -g ApplePressAndHoldEnabled 2>/dev/null || true
   echo "✅ Antigravity: ApplePressAndHoldEnabled = false"
 else
   echo "⚠️  Skipping macOS-specific defaults on non-macOS system"

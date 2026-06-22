@@ -15,4 +15,4 @@ brew "mise"
 brew "orbstack"
 
 cask "logseq"
-cask "ticktick"
+# cask "ticktick"

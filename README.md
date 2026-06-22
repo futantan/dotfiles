@@ -15,6 +15,7 @@ Each top-level directory is a module:
 - `bin/` → `.local/bin/`
 - `ghostty/` → `.config/ghostty/`
 - `git/` → `.gitconfig`
+- `nvim/` → `.config/nvim/`
 - `tmux/` → `.tmux.conf`
 - `zsh/` → `.zshrc`
 - `zellij/` → `.config/zellij/config.kdl`
@@ -25,6 +26,30 @@ Example:
 
 tmux/.tmux.conf → ~/.tmux.conf
 zellij/.config/zellij/config.kdl → ~/.config/zellij/config.kdl
+
+---
+
+## 🧩 Neovim / LazyVim
+
+Neovim is managed as a normal dotfiles module:
+
+```bash
+~/.config/nvim -> ~/dotfiles/nvim/.config/nvim
+```
+
+Local configuration changes live in `nvim/.config/nvim/lua/config/` and
+`nvim/.config/nvim/lua/plugins/`.
+
+LazyVim and plugin updates are managed by `lazy.nvim`, not by pulling the
+LazyVim starter repository:
+
+```bash
+nvim-update
+```
+
+The update command refuses to run with uncommitted Neovim config changes. After
+reviewing the result, commit `nvim/.config/nvim/lazy-lock.json` and any related
+config changes.
 
 ---
 
