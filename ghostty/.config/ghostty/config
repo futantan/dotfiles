@@ -4,7 +4,10 @@ theme = Catppuccin Macchiato
 shell-integration = fish
 quit-after-last-window-closed = true
 
-font-family = MonoLisa
+font-family = ""
+font-family = "MonoLisa"
+font-family = "FiraCode Nerd Font"
+font-family = "Sarasa Term SC"
 font-style = Regular
 font-style-italic = Regular Italic
 font-style-bold = Bold
@@ -13,7 +16,6 @@ font-size = 16
 # this solves the issue of displaying chinese characters
 grapheme-width-method = unicode
 
-background-opacity = 0.9
 background-blur-radius = 20
 
 # Cursor style
