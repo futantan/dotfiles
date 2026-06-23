@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: tdl [ai_command] [second_ai_command]
+
+Create a tmux developer layout in the current directory:
+  - left: editor
+  - right: AI command
+  - bottom: shell
+
+Defaults:
+  editor: $EDITOR, or nvim
+  ai_command: codex --dangerously-bypass-approvals-and-sandbox
+
+Known AI commands are started with their maximum-permission flag:
+  codex    -> --dangerously-bypass-approvals-and-sandbox
+  claude   -> --dangerously-skip-permissions
+  gemini   -> --yolo
+  amp      -> --dangerously-allow-all
+  opencode -> --dangerously-skip-permissions
+
+Examples:
+  tdl
+  tdl opencode
+  tdl "codex -m gpt-5" claude
+EOF
+}
+
+with_max_permissions() {
+  local cmd="$1"
+  local name="${cmd%%[[:space:]]*}"
+  local rest=""
+  local flag=""
+
+  if [[ "$cmd" == *[[:space:]]* ]]; then
+    rest="${cmd#"$name"}"
+  fi
+
+  case "$name" in
+    codex)
+      flag="--dangerously-bypass-approvals-and-sandbox"
+      ;;
+    claude)
+      flag="--dangerously-skip-permissions"
+      ;;
+    gemini)
+      flag="--yolo"
+      ;;
+    amp)
+      flag="--dangerously-allow-all"
+      ;;
+    opencode)
+      flag="--dangerously-skip-permissions"
+      ;;
+  esac
+
+  if [[ -z "$flag" || "$cmd" == *"$flag"* ]]; then
+    printf '%s\n' "$cmd"
+  else
+    printf '%s %s%s\n' "$name" "$flag" "$rest"
+  fi
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ -z "${TMUX:-}" ]]; then
+  echo "tdl must be run inside tmux." >&2
+  exit 1
+fi
+
+current_dir="$PWD"
+editor_cmd="${EDITOR:-nvim} ."
+ai_cmd="$(with_max_permissions "${1:-codex}")"
+second_ai_cmd=""
+if [[ -n "${2:-}" ]]; then
+  second_ai_cmd="$(with_max_permissions "$2")"
+fi
+editor_pane="$TMUX_PANE"
+
+tmux rename-window -t "$editor_pane" "$(basename "$current_dir")"
+
+tmux split-window -v -p 15 -t "$editor_pane" -c "$current_dir" >/dev/null
+ai_pane="$(tmux split-window -h -p 30 -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')"
+
+if [[ -n "$second_ai_cmd" ]]; then
+  second_ai_pane="$(tmux split-window -v -t "$ai_pane" -c "$current_dir" -P -F '#{pane_id}')"
+  tmux send-keys -t "$second_ai_pane" -l "$second_ai_cmd"
+  tmux send-keys -t "$second_ai_pane" C-m
+fi
+
+tmux send-keys -t "$ai_pane" -l "$ai_cmd"
+tmux send-keys -t "$ai_pane" C-m
+
+tmux send-keys -t "$editor_pane" -l "$editor_cmd"
+tmux send-keys -t "$editor_pane" C-m
+
+tmux select-pane -t "$editor_pane"

@@ -41,6 +41,8 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     pkg="${BASH_REMATCH[1]}"
     if brew list --cask "$pkg" &>/dev/null; then
       echo "✅ $pkg already installed (cask)"
+    elif [[ "$pkg" == "font-fira-code-nerd-font" ]] && compgen -G "$HOME/Library/Fonts/FiraCodeNerdFont*.ttf" >/dev/null; then
+      echo "✅ $pkg fonts already present"
     else
       echo "📦 Installing $pkg (cask)..."
       echo "➜ brew install --cask $pkg"
