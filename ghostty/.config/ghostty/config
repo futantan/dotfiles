@@ -16,7 +16,8 @@ font-size = 16
 # this solves the issue of displaying chinese characters
 grapheme-width-method = unicode
 
-background-blur-radius = 20
+# background-blur-radius = 20
+background-opacity = 1
 
 # Cursor style
 cursor-style-blink = true
