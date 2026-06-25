@@ -1,3 +1,18 @@
 [user]
 	name = Tantan Fu
 	email = luckytantanfu@gmail.com
+
+[diff]
+	tool = codediff
+
+[difftool]
+	prompt = false
+
+[difftool "codediff"]
+	cmd = nvim "$LOCAL" "$REMOTE" +"CodeDiff file $LOCAL $REMOTE"
+
+[merge]
+	tool = codediff
+
+[mergetool "codediff"]
+	cmd = nvim "$MERGED" -c "CodeDiff merge \"$MERGED\""
