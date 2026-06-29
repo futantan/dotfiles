@@ -52,7 +52,53 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 done < "$DOTFILES_DIR/packages.txt"
 
 # ------------------------------
-# 3️⃣ Stow all modules
+# 3️⃣ Prepare stow-managed files
+# ------------------------------
+
+migrate_existing_codex_agents() {
+  local source target backup
+
+  source="$DOTFILES_DIR/codex/.codex/AGENTS.md"
+  target="$HOME/.codex/AGENTS.md"
+
+  [[ -f "$source" ]] || return 0
+  [[ -e "$target" || -L "$target" ]] || return 0
+
+  if [[ "$target" -ef "$source" ]]; then
+    echo "✅ Codex AGENTS.md already managed by dotfiles"
+    return 0
+  fi
+
+  if [[ -L "$target" ]]; then
+    echo "✅ Codex AGENTS.md already linked"
+    return 0
+  fi
+
+  if [[ ! -f "$target" ]]; then
+    echo "⚠️  $target exists but is not a regular file; skipping automatic migration"
+    return 0
+  fi
+
+  if cmp -s "$target" "$source"; then
+    echo "✅ Existing Codex AGENTS.md matches dotfiles"
+  else
+    echo "📝 Syncing existing Codex AGENTS.md into dotfiles"
+    cp "$target" "$source"
+  fi
+
+  backup="$target.bak.$(date +%Y%m%d%H%M%S)"
+  while [[ -e "$backup" ]]; do
+    backup="$target.bak.$(date +%Y%m%d%H%M%S)-$RANDOM"
+  done
+
+  mv "$target" "$backup"
+  echo "📦 Backed up previous Codex AGENTS.md to $backup"
+}
+
+migrate_existing_codex_agents
+
+# ------------------------------
+# 4️⃣ Stow all modules
 # ------------------------------
 
 cd "$DOTFILES_DIR"
@@ -71,7 +117,7 @@ for dir in */ ; do
 done
 
 # ------------------------------
-# 4️⃣ macOS App Defaults
+# 5️⃣ macOS App Defaults
 # ------------------------------
 
 if [[ "$(uname -s)" == "Darwin" ]]; then

@@ -13,6 +13,8 @@ Each top-level directory is a module:
 
 - `fish/` → `.config/fish/`
 - `bin/` → `.local/bin/`
+- `codex/` → `.codex/`
+- `claude/` → `.claude/`
 - `ghostty/` → `.config/ghostty/`
 - `git/` → `.gitconfig`
 - `nvim/` → `.config/nvim/`
@@ -26,6 +28,14 @@ Example:
 
 tmux/.tmux.conf → ~/.tmux.conf
 zellij/.config/zellij/config.kdl → ~/.config/zellij/config.kdl
+
+Codex and Claude Code share one global agent instruction file:
+
+codex/.codex/AGENTS.md → ~/.codex/AGENTS.md
+claude/.claude/CLAUDE.md → ~/.codex/AGENTS.md
+
+If `~/.codex/AGENTS.md` already exists as a regular file, `setup.sh` syncs it
+into `codex/.codex/AGENTS.md`, backs up the original, then lets `stow` manage it.
 
 ---
 
