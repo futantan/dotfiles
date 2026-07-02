@@ -1,0 +1,78 @@
+[terminal]
+new_cwd = "follow"
+
+[ui]
+agent_panel_sort = "priority"
+
+[keys]
+prefix = "ctrl+space"
+
+# Keep tmux's prefix+q muscle memory as reload; use prefix+d for detach.
+reload_config = "prefix+q"
+detach = "prefix+d"
+help = "prefix+?"
+settings = "prefix+s"
+
+# Pane controls, matching tmux/.tmux.conf where Herdr has equivalent actions.
+split_horizontal = ["prefix+h", "alt+enter"]
+split_vertical = ["prefix+v", "alt+shift+enter"]
+close_pane = ["prefix+x", "alt+esc"]
+zoom = "prefix+z"
+resize_mode = "prefix+alt+r"
+edit_scrollback = "prefix+["
+
+focus_pane_left = "alt+h"
+focus_pane_down = "alt+j"
+focus_pane_up = "alt+k"
+focus_pane_right = "alt+l"
+goto = ["prefix+g", "alt+i"]
+
+# Tab controls map to tmux windows.
+new_tab = "prefix+c"
+rename_tab = "prefix+r"
+close_tab = "prefix+k"
+previous_tab = ["prefix+p", "alt+left"]
+next_tab = ["prefix+n", "alt+right"]
+switch_tab = "prefix+1..9"
+
+# Workspace controls map to tmux sessions.
+workspace_picker = "prefix+w"
+new_workspace = "prefix+shift+c"
+rename_workspace = "prefix+shift+r"
+close_workspace = "prefix+shift+k"
+previous_workspace = ["prefix+shift+p", "alt+up"]
+next_workspace = ["prefix+shift+n", "alt+down"]
+switch_workspace = "prefix+shift+1..9"
+toggle_sidebar = "prefix+b"
+
+# Navigate-mode movement keeps vim-style pane navigation once navigate mode is open.
+navigate_workspace_up = "up"
+navigate_workspace_down = "down"
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+[[keys.command]]
+key = "ctrl+alt+shift+left"
+type = "shell"
+command = "${HERDR_BIN_PATH:-herdr} pane resize --direction left --amount 5 --current"
+description = "resize pane left"
+
+[[keys.command]]
+key = "ctrl+alt+shift+down"
+type = "shell"
+command = "${HERDR_BIN_PATH:-herdr} pane resize --direction down --amount 5 --current"
+description = "resize pane down"
+
+[[keys.command]]
+key = "ctrl+alt+shift+up"
+type = "shell"
+command = "${HERDR_BIN_PATH:-herdr} pane resize --direction up --amount 5 --current"
+description = "resize pane up"
+
+[[keys.command]]
+key = "ctrl+alt+shift+right"
+type = "shell"
+command = "${HERDR_BIN_PATH:-herdr} pane resize --direction right --amount 5 --current"
+description = "resize pane right"
