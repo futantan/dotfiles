@@ -15,12 +15,7 @@
         "hooks": []
       },
       {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
-          }
-        ]
+        "hooks": []
       }
     ],
     "UserPromptSubmit": [
@@ -28,45 +23,25 @@
         "hooks": []
       },
       {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
-          }
-        ]
+        "hooks": []
       }
     ],
     "PostToolUse": [
       {
         "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
-          }
-        ]
+        "hooks": []
       }
     ],
     "PostToolUseFailure": [
       {
         "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
-          }
-        ]
+        "hooks": []
       }
     ],
     "PermissionRequest": [
       {
         "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
-          }
-        ]
+        "hooks": []
       }
     ],
     "PreToolUse": [

@@ -10,6 +10,7 @@ new_cwd = "follow"
 # Order agents in the sidebar by workspace ("spaces") instead of "priority".
 agent_panel_sort = "spaces"
 
+show_agent_labels_on_pane_borders = true
 [keys]
 # Prefix key that gates the "prefix+…" bindings below (default upstream: ctrl+b).
 prefix = "ctrl+space"
@@ -91,3 +92,6 @@ key = "ctrl+alt+shift+right"
 type = "shell"
 command = "${HERDR_BIN_PATH:-herdr} pane resize --direction right --amount 5 --current"
 description = "resize pane right"
+
+[ui.sound]
+enabled = false
