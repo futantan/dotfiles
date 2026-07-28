@@ -29,3 +29,10 @@ Write code that another strong engineer can quickly understand, safely extend, a
   If something clearly looks off, even if it is not directly related to what you are doing, try to get it fixed along the way.
 - Apply that same high standard to engineering excellence: lint, test failures, and test flakiness.
   If you see one, even if it is not caused by what you are working on right now, still get it fixed.
+
+## iOS / SwiftUI work
+
+Skills from the `build-ios-apps` plugin are available and should be used for iOS work.
+For Codex they come from the installed plugin; for Claude Code they are ported to `~/.claude/skills/`.
+
+For simulator UI automation without MCP, `axe` is installed (`axe tap` / `axe type`, coordinates in points, not pixels).
