@@ -9,6 +9,8 @@ fish_add_path ~/.local/share/nvm/v22.18.0/bin
 
 fish_add_path ~/go/bin
 
+fish_add_path ~/.cargo/bin
+
 fish_add_path ~/.bun/bin
 
 fish_add_path ~/Library/pnpm
