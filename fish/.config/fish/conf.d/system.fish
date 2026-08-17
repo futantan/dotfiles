@@ -1,6 +1,9 @@
 # Ensure core system commands exist even if PATH gets messed up elsewhere
 fish_add_path /usr/bin /bin /usr/sbin /sbin
 
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
 # Homebrew
 fish_add_path /opt/homebrew/bin
 
