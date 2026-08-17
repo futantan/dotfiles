@@ -127,6 +127,37 @@ remove_existing_herdr_config() {
 
 remove_existing_herdr_config
 
+remove_existing_hunk_config() {
+  local source target
+
+  source="$DOTFILES_DIR/hunk/.config/hunk/config.toml"
+  target="$HOME/.config/hunk/config.toml"
+
+  [[ -f "$source" ]] || return 0
+  [[ -e "$target" || -L "$target" ]] || return 0
+
+  if [[ "$target" -ef "$source" ]]; then
+    echo "✅ Hunk config already managed by dotfiles"
+    return 0
+  fi
+
+  if [[ -L "$target" ]]; then
+    rm "$target"
+    echo "🗑️  Removed existing Hunk config link so stow can manage it"
+    return 0
+  fi
+
+  if [[ ! -f "$target" ]]; then
+    echo "⚠️  $target exists but is not a regular file; skipping overwrite"
+    return 0
+  fi
+
+  rm "$target"
+  echo "🗑️  Removed existing Hunk config so stow can manage it"
+}
+
+remove_existing_hunk_config
+
 # ------------------------------
 # 4️⃣ Stow all modules
 # ------------------------------
